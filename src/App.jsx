@@ -6,17 +6,22 @@ function App() {
     i18n: { changeLanguage, language },
   } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(language);
-  const handleChangeLanguage = () => {
-    const newLanguage = currentLanguage === "en" ? "de" : "en";
-    setCurrentLanguage(newLanguage);
-    changeLanguage(newLanguage);
+  const handleChangeLanguage = (value) => {
+    setCurrentLanguage(value);
+    changeLanguage(value);
   };
   return (
     <div className="App">
       <h1>{t("headerTitle", { appName: "App for Translations" })}</h1>
       <h3>Current Language: {currentLanguage}</h3>
-      <button type="button" onClick={handleChangeLanguage}>
-        Change Language
+      <button type="button" onClick={() => handleChangeLanguage("ur")}>
+        Urdu Language
+      </button>
+      <button type="button" onClick={() => handleChangeLanguage("en")}>
+        US Language
+      </button>
+      <button type="button" onClick={() => handleChangeLanguage("de")}>
+        German Language
       </button>
     </div>
   );
